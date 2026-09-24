@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException, Request, Response
 from fastapi.responses import StreamingResponse
 import asyncio
+import os
 import json
 import redis.asyncio as redis
 from contextlib import asynccontextmanager
@@ -39,7 +40,8 @@ redis_client = None
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     global redis_client
-    redis_client = redis.Redis(host='localhost', port=6379, db=0, decode_responses=True)
+    redis_url = os.environ.get("REDIS_URL", "redis://localhost:6379")
+    redis_client = redis.from_url(redis_url, decode_responses=True)
     yield
     await redis_client.close()
 
