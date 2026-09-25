@@ -1,3 +1,4 @@
+[![CI](https://github.com/iqb430/omniroute-gateway/actions/workflows/ci.yml/badge.svg)](https://github.com/iqb430/omniroute-gateway/actions/workflows/ci.yml)
 # Omniroute Gateway
 
 A multi-tenant LLM Gateway engineered for scale, observability, and resilience.
